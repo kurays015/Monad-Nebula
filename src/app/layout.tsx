@@ -39,7 +39,7 @@ export default function RootLayout({
               className="flex items-center gap-1"
             >
               <FaXTwitter />
-              <span className="underline">@kurayss</span>
+              <span className="underline">@constkurays</span>
             </Link>
           </span>
         </div>
