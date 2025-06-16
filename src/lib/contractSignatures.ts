@@ -31,7 +31,13 @@ export const CONTRACT_SIGNATURES = {
       "0x02751cec",
       "0xf305d719",
     ],
-    Lend: ["0x1249c58b", "0xa415bcad", "0x69328dec", "0x573ade81"],
+    Lend: [
+      "0x1249c58b",
+      "0xa415bcad",
+      "0x69328dec",
+      "0x573ade81",
+      "0xe8bbf5d7",
+    ],
   },
 
   // NFT Operations
