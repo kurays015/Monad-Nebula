@@ -4,6 +4,8 @@ import "./globals.css";
 import Providers from "@/app/providers";
 import Header from "@/components/Header";
 import Audio from "@/components/Audio";
+import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,9 +28,21 @@ export default function RootLayout({
       <body className={` ${inter.variable} antialiased`}>
         <Header />
         <Providers>{children}</Providers>
-        <p className="absolute text-slate-400 bottom-4 left-4 hidden lg:block">
-          Use shift or control to explore the Monad Nebula!
-        </p>
+        <div className="fixed left-1 right-1 bottom-2 z-40 flex flex-col items-center text-center text-xs sm:left-4 sm:right-auto sm:bottom-4 sm:items-start sm:text-left sm:text-xs text-slate-400">
+          <span>Use shift or control to explore the Monad Nebula!</span>
+          <span className="flex items-center gap-1 mt-1">
+            Made By:
+            <Link
+              href="https://x.com/constkurays"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1"
+            >
+              <FaXTwitter />
+              <span className="underline">@kurayss</span>
+            </Link>
+          </span>
+        </div>
         <Audio />
       </body>
     </html>

@@ -34,7 +34,7 @@ export default function Audio() {
 
       <button
         onClick={handleToggleMute}
-        className="fixed bottom-6 right-6 z-50 bg-black/70 text-white px-4 py-2 rounded-full shadow-lg border border-white hover:bg-purple-400 transition cursor-pointer"
+        className="fixed bottom-1 right-1 z-50 bg-black/70 text-white px-4 py-2 rounded-full shadow-lg border border-white hover:bg-purple-400 transition cursor-pointer"
       >
         {muted ? <AiFillMuted /> : <AiOutlineSound />}
       </button>
