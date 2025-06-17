@@ -16,6 +16,10 @@ export const CONTRACT_SIGNATURES = {
       "0x7e865aa4",
       "0x344933be",
       "0x620dcbd1",
+      "0x8803dbee",
+      "0x5c11d795",
+      "0x791ac947",
+      "0x022c0d9f",
     ],
     stake: [
       "0xa694fc3a",
@@ -23,6 +27,9 @@ export const CONTRACT_SIGNATURES = {
       "0x3ccfd60b",
       "0xb6b55f25",
       "0x3a4b66f1",
+      "0xe2bbb158",
+      "0x379607f5",
+      "0x4e71d92d",
     ],
     AddLiquidity: [
       "0xe8e33700",
@@ -39,19 +46,13 @@ export const CONTRACT_SIGNATURES = {
       "0xe8bbf5d7",
     ],
     Borrow: ["0xe8bbf5d7", "0x4b8a3529"],
-    Deposit: ["0xe8bbf5d7", "0x47e7ef24"],
+    // Deposit: ["0xe8bbf5d7", "0x47e7ef24"],
   },
 
   // NFT Operations
   NFT: {
-    MintNFT: [
-      "0x40c10f19",
-      "0xa0712d68",
-      "0x6a627842",
-      "0x42842e0e",
-      "0x1ff7712f",
-      "0x1249c58b",
-    ],
+    MintNFT: ["0x40c10f19", "0xa0712d68", "0x4f02c420"],
+    Burn: ["0x42966c68", "0x9dc29fac", "0xa399b6a2"],
     TransferNFT: ["0x23b872dd", "0x42842e0e", "0xb88d4fde", "0xa22cb465"],
     SellNFT: ["0x96b5a755", "0xfb0f3ee1", "0xab834bab", "0xe7acab24"],
     // approve: ["0x095ea7b3", "0xa22cb465", "0x40c10f19"],
@@ -60,6 +61,6 @@ export const CONTRACT_SIGNATURES = {
   // Contract Operations
   CONTRACT: {
     deploy: ["0xcc6212f2", "0x60a06040"], // Contract creation transactions
-    call: ["0x"], // Generic contract calls
+    // call: ["0x"], // Generic contract calls
   },
 } as const;
