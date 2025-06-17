@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Html, Line } from "@react-three/drei";
 import * as THREE from "three";
+import { formatTransactionType } from "@/lib/formatTxType";
+import { typeColors } from "@/lib/typeColors";
 
 interface TransactionPlanetProps {
   position: [number, number, number];
@@ -9,37 +11,6 @@ interface TransactionPlanetProps {
   count: number;
   scale: number;
 }
-
-const typeColors: { [key: string]: string } = {
-  // DeFi types
-  swap: "#FF6B6B", // Coral Red
-  stake: "#4ECDC4", // Turquoise
-  AddLiquidity: "#FFD93D", // Bright Yellow
-  Lend: "#95E1D3", // Mint Green
-
-  // NFT types
-  MintNFT: "#FF9F1C", // Orange
-  TransferNFT: "#2EC4B6", // Teal
-  SellNFT: "#E71D36", // Crimson
-  approve: "#6A0572", // Purple
-
-  // Contract types
-  deploy: "#7209B7", // Deep Purple
-  call: "#3A86FF", // Blue
-
-  // Default for any other types
-  default: "#757575", // Gray
-};
-
-const formatTransactionType = (type: string) => {
-  return (
-    type.charAt(0).toUpperCase() +
-    type
-      .slice(1)
-      .replace(/([A-Z])/g, " $1")
-      .trim()
-  );
-};
 
 export default function TransactionPlanet({
   position,
