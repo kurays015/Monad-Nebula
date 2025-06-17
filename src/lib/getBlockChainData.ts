@@ -35,9 +35,9 @@ type SignatureMap = {
 
 // Function to determine transaction type based on input data
 function analyzeTransactionType(input: string): TransactionType {
-  if (!input || input === "0x") {
-    return { category: "CONTRACT", type: "call" };
-  }
+  // if (!input || input === "0x") {
+  //   return { category: "CONTRACT", type: "call" };
+  // }
 
   const signature = input.slice(0, 10).toLowerCase();
 
