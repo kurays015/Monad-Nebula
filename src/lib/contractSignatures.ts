@@ -38,6 +38,8 @@ export const CONTRACT_SIGNATURES = {
       "0x573ade81",
       "0xe8bbf5d7",
     ],
+    Borrow: ["0xe8bbf5d7", "0x4b8a3529"],
+    Deposit: ["0xe8bbf5d7", "0x47e7ef24"],
   },
 
   // NFT Operations
@@ -48,9 +50,10 @@ export const CONTRACT_SIGNATURES = {
       "0x6a627842",
       "0x42842e0e",
       "0x1ff7712f",
+      "0x1249c58b",
     ],
     TransferNFT: ["0x23b872dd", "0x42842e0e", "0xb88d4fde", "0xa22cb465"],
-    SellNFT: ["0x96b5a755", "0xfb0f3ee1", "0xab834bab"],
+    SellNFT: ["0x96b5a755", "0xfb0f3ee1", "0xab834bab", "0xe7acab24"],
     // approve: ["0x095ea7b3", "0xa22cb465", "0x40c10f19"],
   },
 
