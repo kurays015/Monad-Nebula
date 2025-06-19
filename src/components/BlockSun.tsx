@@ -6,7 +6,7 @@ import { useMonadContext } from "@/context/MonadContext";
 import { useFrame } from "@react-three/fiber";
 
 export default function BlockSun() {
-  const { latestBlock } = useMonadContext();
+  const { latestBlock, connectionStatus } = useMonadContext();
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
   const billboardRef = useRef<THREE.Group>(null);
@@ -34,10 +34,10 @@ export default function BlockSun() {
     }
   });
 
-  // if (isLoading || !latestBlock)
+  console.log(connectionStatus);
+
+  // if (connectionStatus === "connecting" || !latestBlock)
   //   return <div className="text-slate-400">Loading...</div>;
-  // if (isError)
-  //   return <div className="text-slate-400">Error: {error.message}</div>;
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -110,10 +110,17 @@ export default function BlockSun() {
             whiteSpace: "nowrap",
             boxShadow: "0 0 24px #836EF980",
             textShadow: "0 2px 8px #000",
-            zIndex: 999,
           }}
         >
-          <div>Block #{Number(latestBlock?.number).toLocaleString()}</div>
+          <div>
+            Block #
+            {connectionStatus === "connected" &&
+            latestBlock &&
+            typeof latestBlock.number === "number" &&
+            !isNaN(latestBlock.number)
+              ? latestBlock.number.toLocaleString()
+              : 0}
+          </div>
         </Html>
       </group>
 

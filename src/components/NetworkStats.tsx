@@ -18,7 +18,7 @@ import StatsCard from "@/components/ui/StatsCard";
 export default function NetworkStats() {
   const { stats, isConnected, connectionStatus, latestBlock } =
     useMonadContext();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Use the TPS calculator hook
   const tpsStats = useTpsCalculator(stats.currentTps, stats.totalTransactions);
@@ -93,14 +93,14 @@ export default function NetworkStats() {
       {/* Network Stats Panel */}
       <animated.div
         style={visibilitySpring}
-        className="fixed top-4 right-20 z-40 w-80 sm:w-96 lg:w-[420px]"
+        className="fixed top-4 right-20 w-80 sm:w-96 lg:w-[420px] z-40"
       >
         <animated.div
           style={connectionSpring}
           className="bg-black/90 backdrop-blur-xl border border-purple-500/40 rounded-2xl p-6 shadow-2xl"
         >
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-6 z-40">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-purple-500 animate-pulse"></div>
               <h2 className="text-white text-xl font-bold">MONAD NETWORK</h2>

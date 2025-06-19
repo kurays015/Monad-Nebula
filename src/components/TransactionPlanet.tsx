@@ -103,7 +103,7 @@ export default function TransactionPlanet({
             minWidth: "90px",
             boxShadow: `0 0 12px ${color}40`,
             textShadow: "0 2px 8px #000",
-            zIndex: 999,
+            zIndex: 10,
           }}
         >
           <div>

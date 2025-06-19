@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export default function TransactionFeed() {
   const { transactions, isConnected } = useMonadContext();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const containerSpring = useSpring({
     opacity: isConnected ? 1 : 0.3,
