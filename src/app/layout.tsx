@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "@/app/providers";
 import Header from "@/components/Header";
 import Audio from "@/components/Audio";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import MonadContextProvider from "@/context/MonadContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${inter.variable} antialiased`}>
         <Header />
-        <Providers>{children}</Providers>
+        <MonadContextProvider>{children}</MonadContextProvider>
         <div className="fixed left-1 right-1 bottom-2 z-40 flex flex-col items-center text-center text-xs sm:left-4 sm:right-auto sm:bottom-4 sm:items-start sm:text-left sm:text-xs text-slate-400">
           <span>Use shift or control to explore the Monad Nebula!</span>
           <span className="flex items-center gap-1 mt-1">

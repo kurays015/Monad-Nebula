@@ -4,13 +4,7 @@ import { Html, Line } from "@react-three/drei";
 import * as THREE from "three";
 import { formatTransactionType } from "@/lib/formatTxType";
 import { typeColors } from "@/lib/typeColors";
-
-interface TransactionPlanetProps {
-  position: [number, number, number];
-  type: string;
-  count: number;
-  scale: number;
-}
+import { TransactionPlanetProps } from "@/types/blockchain";
 
 export default function TransactionPlanet({
   position,
@@ -109,6 +103,7 @@ export default function TransactionPlanet({
             minWidth: "90px",
             boxShadow: `0 0 12px ${color}40`,
             textShadow: "0 2px 8px #000",
+            zIndex: 999,
           }}
         >
           <div>

@@ -1,17 +1,19 @@
 import { useRef } from "react";
 import { Html, Torus } from "@react-three/drei";
 import * as THREE from "three";
-import useGetLatestBlock from "@/hooks/useGetLatestBlock";
 import { useSpring, animated } from "@react-spring/web";
+import { useMonadContext } from "@/context/MonadContext";
+import { useFrame } from "@react-three/fiber";
 
 export default function BlockSun() {
-  const { data: latestBlock, isLoading, isError, error } = useGetLatestBlock();
+  const { latestBlock } = useMonadContext();
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
+  const billboardRef = useRef<THREE.Group>(null);
 
   // Animated TPS value
   const tpsSpring = useSpring({
-    tps: latestBlock?.TPS,
+    tps: latestBlock?.TPS || 0,
     config: { tension: 120, friction: 14 },
   });
 
@@ -25,10 +27,17 @@ export default function BlockSun() {
     config: { duration: 1000 },
   });
 
-  if (isLoading || !latestBlock)
-    return <div className="text-slate-400">Loading...</div>;
-  if (isError)
-    return <div className="text-slate-400">Error: {error.message}</div>;
+  // Billboard effect to always face camera
+  useFrame(({ camera }) => {
+    if (billboardRef.current) {
+      billboardRef.current.lookAt(camera.position);
+    }
+  });
+
+  // if (isLoading || !latestBlock)
+  //   return <div className="text-slate-400">Loading...</div>;
+  // if (isError)
+  //   return <div className="text-slate-400">Error: {error.message}</div>;
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -83,28 +92,30 @@ export default function BlockSun() {
         />
       </Torus>
 
-      {/* Block number text with improved visibility */}
-      <Html
-        position={[0, 4.5, 0]}
-        transform
-        occlude
-        style={{
-          background: "rgba(0, 0, 0, 0.85)",
-          padding: "14px 28px",
-          borderRadius: "10px",
-          border: "2px solid #836EF9",
-          color: "#fff",
-          fontSize: "32px",
-          fontWeight: "bold",
-          textAlign: "center",
-          pointerEvents: "none",
-          whiteSpace: "nowrap",
-          boxShadow: "0 0 24px #836EF980",
-          textShadow: "0 2px 8px #000",
-        }}
-      >
-        <div>Block #{Number(latestBlock?.number).toLocaleString()}</div>
-      </Html>
+      {/* Block number text with billboard approach */}
+      <group ref={billboardRef} position={[0, 4.5, 0]}>
+        <Html
+          position={[0, 0, 0]}
+          center
+          style={{
+            background: "rgba(0, 0, 0, 0.85)",
+            padding: "14px 28px",
+            borderRadius: "10px",
+            border: "2px solid #836EF9",
+            color: "#fff",
+            fontSize: "32px",
+            fontWeight: "bold",
+            textAlign: "center",
+            pointerEvents: "none",
+            whiteSpace: "nowrap",
+            boxShadow: "0 0 24px #836EF980",
+            textShadow: "0 2px 8px #000",
+            zIndex: 999,
+          }}
+        >
+          <div>Block #{Number(latestBlock?.number).toLocaleString()}</div>
+        </Html>
+      </group>
 
       {/* Outer glow */}
       <mesh>
